@@ -53,7 +53,10 @@ private:
 class ReadLine {
 public:
 	ReadLine(istream &i) : is(i) { }
-	bool operator()(string &s) const { return getline(is, s); }
+	// 不能在返回时将‘std::basic_istream<char>’转换为‘bool’
+//	bool operator()(string &s) const { return getline(is, s); }
+    // 强制类型转换？
+	bool operator()(string &s) const { return (bool)getline(is, s); }
 private:
 	istream &is;
 };
