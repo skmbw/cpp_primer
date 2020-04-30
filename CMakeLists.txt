@@ -1,0 +1,10 @@
+cmake_minimum_required(VERSION 3.7)
+project(cpp_primer)
+set(CMAKE_CXX_STANDARD 14)
+
+include_directories(. ./1 ./2 ./3 ./4 ./9)
+add_subdirectory(1)
+add_subdirectory(2)
+add_subdirectory(3)
+add_subdirectory(4)
+add_subdirectory(9)
