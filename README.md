@@ -19,6 +19,6 @@
 * 到这个目录取软链接一下
 * sudo ln -s /usr/local/include/c++/7.1.0 /usr/include/c++/
 * 这样clang就应该配置好了
-* 器是还是没有配置好，iostream:38:10: 致命错误：bits/c++config.h：没有那个文件或目录
+* 应该还是没有配置好，iostream:38:10: 致命错误：bits/c++config.h：没有那个文件或目录
 * 是因为的确没有这个文件。这个文件夹未空，需要将文件链接进来，在downlaods/gcc-7.1.0-build/x86_64-redhat-linux 复制过来的，
 但是这个文件夹,引用了很多源码文件夹里的头文件，所以重新解压gcc-7.1.0，所以gcc-7.1.0这个文件夹不能删除。
