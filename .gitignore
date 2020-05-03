@@ -44,6 +44,8 @@ install_manifest.txt
 compile_commands.json
 CTestTestfile.cmake
 _deps
+# clion的编译构建目录
+cmake-build-debug
 
 ### Python template
 # Byte-compiled / optimized / DLL files
