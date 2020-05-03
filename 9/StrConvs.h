@@ -24,7 +24,8 @@ inline
 //double stod(const std::string &s, std::size_t * = 0)
 double stod(std::string &s, std::size_t * = 0)
 {
-    char **buf = 0;
+//    char **buf = 0; // use nullptr instead of.
+    char **buf = nullptr;
     return std::strtod(s.c_str(), buf);
 }
 #endif

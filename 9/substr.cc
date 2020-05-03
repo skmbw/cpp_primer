@@ -40,11 +40,12 @@ int main()
 {
 	try {
 		string s("hello world");
-		cout << s.substr(0, 5) << endl;  // prints hello
-		cout << s.substr(6) << endl;     // prints world
-		cout << s.substr(6, 11) << endl; // prints world
-		cout << s.substr(12) << endl;    // throws out_of_range 
-	} catch(out_of_range) {cout << "caught out_of_range" << endl; }
+		cout << s.substr(0, 5) << endl;  // prints hello，从0到5，包含头，不包含尾[index1, index2)，index2 <= str.size()
+		cout << s.substr(6) << endl;     // prints world，从6到结尾
+		cout << s.substr(6, 11) << endl; // prints world，从6-11，不包含11，[index, size）前面闭区间，后面开区间
+		cout << s.substr(12) << endl;    // throws out_of_range
+		// 编译警告，要使用引用，同时打印异常信息 ex.what()
+	} catch(out_of_range &ex) {cout << "caught out_of_range:" << ex.what() << endl; }
 
 	return 0;
 }
