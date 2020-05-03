@@ -26,3 +26,5 @@
 sudo ln -s /usr/include/c++/7.1.0/x86_64-pc-linux-gnu x86_64-redhat-linux
 ### gnome登录的时候会有声音
 * 是因为更新打开了屏幕阅读器，点击右上角的小人-屏幕阅读器，关掉就好了
+### clang的别名
+* clang clang++ clang-cl clang-cpp都是clang-10的别名，也就是clang和clang++是一样的
