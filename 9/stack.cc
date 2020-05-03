@@ -46,12 +46,12 @@ int main()
 	stack<int> intStack;  // empty stack
 
 	// fill up the stack
-	for (size_t ix = 0; ix != 10; ++ix)
+	for (size_t ix = 0; ix != 10; ++ix) // 前缀++性能比较好，不需要保存临时值
     	intStack.push(ix);   // intStack holds 0 . . . 9 inclusive
 
 	// while there are still values in intStack
 	while (!intStack.empty()) {
-    	int value = intStack.top();
+    	int value = intStack.top(); // 获取栈顶元素，但是不弹出
     	// code that uses value
 		cout << value << endl;
     	intStack.pop(); // pop the top element, and repeat
