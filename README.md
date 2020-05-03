@@ -12,13 +12,17 @@
 
 ### centos7 配置预编译的suse的clang 10.0.0
 * 首先 ./clang++ -v 看clang选择的是哪个gcc
-* 如果版本低，可以在那个目录软链接高版本的，我是7.1.0，如下：
+* 如果版本低，可以在那个对应的目录下，软链接一个高版本的，我是7.1.0，如下：
 * sudo ln -s /usr/local/lib/gcc/x86_64-pc-linux-gnu/7.1.0 /opt/rh/devtoolset-3/root/usr/lib/gcc/x86_64-redhat-linux/
 * 这样，clang就能选择到最新的gcc了，可是运行会出现，找不到头文件的情况，是因为包含文件没有配置
 * /opt/rh/devtoolset-3/root/usr/lib/gcc/x86_64-redhat-linux/7.1.0/../../../../include/c++/7.1.0/iostream:38:10: fatal error: 'bits/c++config.h' file not found
-* 到这个目录取软链接一下
+* 这个目录下的确是没有这个文件，到这个目录取软链接一下
 * sudo ln -s /usr/local/include/c++/7.1.0 /usr/include/c++/
-* 这样clang就应该配置好了
+* 这样clang就应该配置好了（还是没有好）
 * 应该还是没有配置好，iostream:38:10: 致命错误：bits/c++config.h：没有那个文件或目录
-* 是因为的确没有这个文件。这个文件夹未空，需要将文件链接进来，在downlaods/gcc-7.1.0-build/x86_64-redhat-linux 复制过来的，
+* 是因为的确没有这个文件。x86_64-pc-linux-gnu这个文件夹为空，需要将文件链接进来，在downlaods/gcc-7.1.0-build/x86_64-redhat-linux 复制过来的，
 但是这个文件夹,引用了很多源码文件夹里的头文件，所以重新解压gcc-7.1.0，所以gcc-7.1.0这个文件夹不能删除。
+* 根据规范，c++/7.1.0 下需要含有文件夹名字是x86_64-redhat-linux的文件夹，所以软链接
+sudo ln -s /usr/include/c++/7.1.0/x86_64-pc-linux-gnu x86_64-redhat-linux
+### gnome登录的时候会有声音
+* 是因为更新打开了屏幕阅读器，点击右上角的小人-屏幕阅读器，关掉就好了
