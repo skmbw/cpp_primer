@@ -49,6 +49,7 @@ int main()
 
 	// convert the first substring in s that starts with a digit,  d = 3.14
 	string s2 = "pi = 3.14";
+	// 找到第一个数字字符或者.号，获取索引，然后从当前位置开始，截取到最后。
 	d = stod(s2.substr(s2.find_first_of("+-.0123456789")));
 
 	cout << "d = " << d << " s = " << s << " s2 is: " << s2 << endl;
