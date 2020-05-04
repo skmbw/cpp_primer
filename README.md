@@ -28,3 +28,6 @@ sudo ln -s /usr/include/c++/7.1.0/x86_64-pc-linux-gnu x86_64-redhat-linux
 * 是因为更新打开了屏幕阅读器，点击右上角的小人-屏幕阅读器，关掉就好了
 ### clang的别名
 * clang clang++ clang-cl clang-cpp都是clang-10的别名，也就是clang和clang++是一样的
+### sh.exe was found in your PATH，sh.exe must not be in your path
+* cmake中添加 -DCMAKE_SH="CMAKE_SH-NOTFOUND" 这个参数
+* 或者再CMakeLists.txt中 set(DCMAKE_SH="CMAKE_SH-NOTFOUND")
