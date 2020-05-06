@@ -2,7 +2,8 @@
 // Created by yinlei on 2020/5/6.
 //
 
-#include <algorithm>
+#include <algorithm> // 泛型算法
+#include <numeric> // 与算术相关的算法
 #include <vector>
 #include <iostream>
 
@@ -25,6 +26,11 @@ int main() {
     auto ret = std::count(ints.begin(), ints.end(), 6);
 
     std::cout << "the 6 occurs = " << ret << " count." << std::endl;
+
+    // 使用int或者auto都可以
+//    int sum = std::accumulate(ints.begin(), ints.end(), 0);
+    auto sum = std::accumulate(ints.begin(), ints.end(), 0);
+    std::cout << "结果是:" << sum << std::endl;
 
     return 0;
 }
