@@ -55,15 +55,16 @@ int main()
 	}
 	
 	string river("Mississippi");
-	
+	// 从左侧开始搜索（其实是第一个匹配的字符）
 	string::size_type first_pos = river.find("is");  // returns 1
+	// 从右侧开始搜索（其实时最后一个匹配的字符），索引仍然时从左开始算的
 	string::size_type last_pos = river.rfind("is");  // returns 4
 	cout << "find returned: " << first_pos 
 	     << " rfind returned: " << last_pos << endl;
 	
 	string dept("03714p3");
 	// returns 5, which is the index to the character 'p'
-	pos = dept.find_first_not_of(numbers);
+	pos = dept.find_first_not_of(numbers); // 找到第一个不是数字的
 	cout << "first_not returned: " << pos << endl;
 	
 	return 0;

@@ -16,7 +16,7 @@
 * sudo ln -s /usr/local/lib/gcc/x86_64-pc-linux-gnu/7.1.0 /opt/rh/devtoolset-3/root/usr/lib/gcc/x86_64-redhat-linux/
 * 这样，clang就能选择到最新的gcc了，可是运行会出现，找不到头文件的情况，是因为包含文件没有配置
 * /opt/rh/devtoolset-3/root/usr/lib/gcc/x86_64-redhat-linux/7.1.0/../../../../include/c++/7.1.0/iostream:38:10: fatal error: 'bits/c++config.h' file not found
-* 这个目录下的确是没有这个文件，到这个目录取软链接一下
+* 这个目录下的确是没有这个文件，到这个目录去软链接一下
 * sudo ln -s /usr/local/include/c++/7.1.0 /usr/include/c++/
 * 这样clang就应该配置好了（还是没有好）
 * 应该还是没有配置好，iostream:38:10: 致命错误：bits/c++config.h：没有那个文件或目录
