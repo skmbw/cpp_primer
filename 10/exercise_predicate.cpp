@@ -23,6 +23,13 @@ int main() {
     vector<string> wordList;
     wordList.emplace_back("the");
     wordList.emplace_back("red");
+    wordList.emplace_back("red");
+    wordList.emplace_back("orange");
+    wordList.emplace_back("the");
+    wordList.emplace_back("small");
+    wordList.emplace_back("ok");
+    wordList.emplace_back("ok");
+    wordList.emplace_back("yin");
 
     elimDups(wordList);
 
