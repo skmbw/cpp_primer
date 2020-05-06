@@ -43,7 +43,10 @@ bool process(int);
 
 int main()
 {
-	stack<int> intStack;  // empty stack
+    // c++标准库中有三个适配器，泛型中传入第二个参数，可以更改底层的默认容器类型
+    // stack和queue默认时基于deque实现的
+    // priority_queue默认是基于vector实现的
+	stack<int> intStack;  // empty stack，stack在c++中是适配器
 
 	// fill up the stack
 	for (size_t ix = 0; ix != 10; ++ix) // 前缀++性能比较好，不需要保存临时值
