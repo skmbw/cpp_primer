@@ -25,40 +25,55 @@
  * 	One Lake Street
  * 	Upper Saddle River, NJ  07458
  * 	Fax: (201) 236-3290
-*/ 
+*/
 
 #include <cstddef>
+
 using std::size_t;
 
 #include <deque>
+
 using std::deque;
 
+#include <queue>
+
 #include <stack>
-using std::stack; 
+
+using std::stack;
 
 #include <iostream>
+
 using std::cout; using std::cerr; using std::endl;
 
 bool process(int);
 
-int main()
-{
+int main() {
     // c++标准库中有三个适配器，泛型中传入第二个参数，可以更改底层的默认容器类型
     // stack和queue默认时基于deque实现的
     // priority_queue默认是基于vector实现的
-	stack<int> intStack;  // empty stack，stack在c++中是适配器
+    stack<int> intStack;  // empty stack，stack在c++中是适配器
 
-	// fill up the stack
-	for (size_t ix = 0; ix != 10; ++ix) // 前缀++性能比较好，不需要保存临时值
-    	intStack.push(ix);   // intStack holds 0 . . . 9 inclusive
+    // fill up the stack
+    for (size_t ix = 0; ix != 10; ++ix) // 前缀++性能比较好，不需要保存临时值
+        intStack.push(ix);   // intStack holds 0 . . . 9 inclusive
 
-	// while there are still values in intStack
-	while (!intStack.empty()) {
-    	int value = intStack.top(); // 获取栈顶元素，但是不弹出
-    	// code that uses value
-		cout << value << endl;
-    	intStack.pop(); // pop the top element, and repeat
-	}
-
-	return 0;
+    // while there are still values in intStack
+    while (!intStack.empty()) {
+        int value = intStack.top(); // 获取栈顶元素，但是不弹出
+        // code that uses value
+        cout << value << endl;
+        intStack.pop(); // pop the top element, and repeat
+    }
+//	std::queue<int> smallQueue;
+//	smallQueue.push(2); // 放入队尾
+//	smallQueue.emplace(2); // 使用提供的参数构造一个int，放入队尾
+//	smallQueue.pop(); // 弹出元素，删除元素
+//	smallQueue.front(); // 获取头元素
+//	smallQueue.back(); // 获取尾元素
+//    std::priority_queue<int> priorityQueue;
+//	priorityQueue.push(2);
+//	priorityQueue.emplace(3);
+//	priorityQueue.pop(); // 弹出元素（删除元素）
+//	priorityQueue.top(); // 弹出优先级最高的元素，不删除元素
+    return 0;
 }
