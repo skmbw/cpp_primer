@@ -5,6 +5,8 @@
 #include <vector>
 #include <iostream>
 
+using namespace std;
+
 bool isShorter(const std::string & a, const std::string & b) {
     return a.size() > b.size();
 }
@@ -18,6 +20,11 @@ void elimDups(std::vector<std::string> &words) {
 }
 
 int main() {
+    vector<string> wordList;
+    wordList.emplace_back("the");
+    wordList.emplace_back("red");
+
+    elimDups(wordList);
 
     return 0;
 }
