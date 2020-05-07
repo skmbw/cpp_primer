@@ -56,6 +56,16 @@ int main() {
     }
     std::cout << std::endl;
 
+    std::string::size_type sz = 4;
+    // 使用find_if，查找长度小于4的单词
+    // 捕获列表中使用局部变量
+    auto after_iter = std::find_if(wordList.begin(), wordList.end(), [sz](std::string & s) -> bool { return s.length() < sz; });
+    // 因为wordList时排序过的，所以，找到第一个长度小于4的，后面的长度也是小于4的，所以可以直接迭代
+    for (; after_iter != wordList.end(); ++after_iter) {
+        std::cout << *after_iter << " ";
+    }
+    std::cout << std::endl;
+
     return 0;
 }
 
