@@ -72,6 +72,8 @@ int main() {
     std::for_each(after_iter, wordList.end(), [](const std::string & string1) { std::cout <<  string1 << " ";});
     std::cout << std::endl;
 
+    // 值传递的，捕获列表是在lambda创建时拷贝的，引用传递，跟普通的引用一样，是变量的别名
+
     return 0;
 }
 
