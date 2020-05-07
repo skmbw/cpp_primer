@@ -66,6 +66,12 @@ int main() {
     }
     std::cout << std::endl;
 
+    // for_each算法，迭代输入范围，每一个元素都调用 可调用对象，在这里🥌lambda表达式
+//    std::for_each(after_iter, wordList.end(), [](const std::string & string1) -> void { std::cout <<  string1;});
+    // 当lambda表达式，没有返回返回值时，可以省略返回值类型void和箭头->
+    std::for_each(after_iter, wordList.end(), [](const std::string & string1) { std::cout <<  string1 << " ";});
+    std::cout << std::endl;
+
     return 0;
 }
 
