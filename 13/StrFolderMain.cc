@@ -35,16 +35,16 @@ using std::vector;
 
 #include "StrFolder.h"
 
-#include "String.h"
+#include "Strings.h"
 
 int main()
 {
-	String s1("contents1");
-	String s2("contents2");
-	String s3("contents3");
-	String s4("contents4");
-	String s5("contents5");
-	String s6("contents6");
+	Strings s1("contents1");
+	Strings s2("contents2");
+	Strings s3("contents3");
+	Strings s4("contents4");
+	Strings s5("contents5");
+	Strings s6("contents6");
 	
 	// all new messages, no copies yet
 	Message m1(s1);

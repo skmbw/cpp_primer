@@ -30,7 +30,7 @@
 #ifndef STRFOLDER_H
 #define STRFOLDER_H
 
-#include "String.h"
+#include "Strings.h"
 #include <set>
 
 class Folder;
@@ -40,7 +40,7 @@ class Message {
 	friend class Folder;
 public:
     // folders is implicitly initialized to the empty set 
-    explicit Message(const String &str = ""): 
+    explicit Message(const Strings &str = ""):
 		contents(str) { }  
 
     // copy control to manage pointers to this Message
@@ -54,7 +54,7 @@ public:
     void debug_print(); // print contents and it's list of Folders, 
                         // printing each Folder as well
 private:
-    String contents;      // actual message text
+    Strings contents;      // actual message text
     std::set<Folder*> folders; // Folders that have this Message
 
     // utility functions used by copy constructor, assignment, and destructor

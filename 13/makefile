@@ -14,9 +14,9 @@ include ../GNU_makefile_template
 LOCFLAGS = -I../1 -I../7
 
 Folder.o FolderMain.o: Folder.h
-StrFolder.o StrFolderMain.o: StrFolder.h String.h
-String.o: String.h
-useStrVec.o StrVec.o: String.h StrVec.h
+StrFolder.o StrFolderMain.o: StrFolder.h Strings.h
+Strings.o: Strings.h
+useStrVec.o StrVec.o: Strings.h StrVec.h
 
 useStrVec.exe: StrVec.o useStrVec.o
 	$(CC) $(CCFLAGS) $(LOCFLAGS) StrVec.o useStrVec.o -o useStrVec.exe
@@ -24,7 +24,7 @@ useStrVec.exe: StrVec.o useStrVec.o
 FolderMain.exe: Folder.o FolderMain.o
 	$(CC) $(CCFLAGS) $(LOCFLAGS) Folder.o FolderMain.o -o FolderMain.exe
 
-StrFolderMain.exe: StrFolder.o StrFolderMain.o String.o
-	$(CC) $(CCFLAGS) $(LOCFLAGS) StrFolder.o StrFolderMain.o String.o \
+StrFolderMain.exe: StrFolder.o StrFolderMain.o Strings.o
+	$(CC) $(CCFLAGS) $(LOCFLAGS) StrFolder.o StrFolderMain.o Strings.o \
 		-o StrFolderMain.exe
 
