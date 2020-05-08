@@ -34,3 +34,6 @@ sudo ln -s /usr/include/c++/7.1.0/x86_64-pc-linux-gnu x86_64-redhat-linux
 
 ### clion无法使用vs toolchains的问题
 * String.h影响了vs的头文件导入，导致不能导入正确的string.h，导致cstring中很多函数，不在全局命名空间中。将其改成Strings.h，就OK了
+### CMakeLists.txt 配置生成.o文件的问题
+* CMakeLists.txt 不需要配置生成 .o 对象文件，回自动生成
+* add_executable(FolderMain.exe Folder.cc FolderMain.cc) # (.h头文件貌似不需要)，只需要列出对应的源文件就OK
