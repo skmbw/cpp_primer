@@ -67,7 +67,8 @@ int main()
 	cout << word_count["Anna"] << endl; // prints 2
 	
 	// various ways to add word to word_count 
-	string word; 
+	string word;
+	word_count.insert({word, 2}); // 使用字符字面值pair插入
 	word_count.insert(make_pair(word, 1));
 	word_count.insert(pair<string, size_t>(word, 1));
 	word_count.insert(map<string, size_t>::value_type(word, 1));
