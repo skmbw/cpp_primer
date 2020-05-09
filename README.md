@@ -37,3 +37,6 @@ sudo ln -s /usr/include/c++/7.1.0/x86_64-pc-linux-gnu x86_64-redhat-linux
 ### CMakeLists.txt 配置生成.o文件的问题
 * CMakeLists.txt 不需要配置生成 .o 对象文件，回自动生成
 * add_executable(FolderMain.exe Folder.cc FolderMain.cc) # (.h头文件貌似不需要)，只需要列出对应的源文件就OK
+
+### SSL certificate problem: self signed certificate in certificate chain
+* clion没有网络，需要从网络获取数据签名，连上网络，从新pull就OK了

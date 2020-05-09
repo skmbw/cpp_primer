@@ -8,7 +8,7 @@
 using namespace std;
 
 bool isShorter(const std::string & a, const std::string & b) {
-    return a.size() >= b.size();
+    return a.size() >= b.size(); // ms vs 中使用 >= 就会错误 Expression: invalid comparator，使用 > 没问题
 }
 
 void elimDups(std::vector<std::string> & words) {
