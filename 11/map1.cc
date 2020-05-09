@@ -81,13 +81,18 @@ int main()
 	// if Anna not already in word_count, insert it with value 1
 	insert_ret = word_count.insert(make_pair("Anna", 1));
 	
-	if (insert_ret.second == false)    // Anna was already in the map
-	    insert_ret.first->second++;    // increment current value
+//	if (insert_ret.second == false)    // Anna was already in the map
+//	    insert_ret.first->second++;    // increment current value
+    // 直接取反就可以了，另外，使用大括号是更好的实践，即使只有一条语句
+    if (!insert_ret.second) {
+        insert_ret.first -> second++;
+    }
 	cout << word_count["Anna"] << endl;
 
 	// get an iterator to an element in word_count
-	map <string, size_t>::iterator map_it = word_count.begin();
-	
+//	map<string, size_t>::iterator map_it = word_count.begin();
+	auto map_it = word_count.begin(); // 使用自动类型推断更简洁
+
 	// *map_it is a reference to a pair<const string, size_t> object
 	cout << map_it->first;         // prints the key for this element
 	cout << " " << map_it->second; // prints the value of the element
