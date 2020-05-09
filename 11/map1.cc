@@ -42,7 +42,7 @@ using std::pair; using std::make_pair;
 #include <iostream>
 using std::cout; using std::endl;
 
-#include "Sales_data.h"      
+#include "7/Sales_data.h" // 指定具体的路径，因为这个项目中有多个这个文件
 #include "make_plural.h"
 
 // SDComp points to a function that compares two Sales_data objects
