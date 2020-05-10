@@ -41,3 +41,6 @@ sudo ln -s /usr/include/c++/7.1.0/x86_64-pc-linux-gnu x86_64-redhat-linux
 
 ### SSL certificate problem: self signed certificate in certificate chain
 * clion没有网络，需要从网络获取数据签名，连上网络，从新pull就OK了
+
+### 如果要在clion配置给main函数传参
+* 在程序参数中，选择+，选择内置的宏变量，然后再写具体的参数。运行目录一般不需要写
