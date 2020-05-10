@@ -4,4 +4,4 @@ project(cpp_primer_11)
 set(CMAKE_CXX_STANDARD 14)
 
 add_executable(map1.exe map1.cc)
-add_executable(word_transform.exe word_transform.cc)
+add_executable(word_transform word_transform.cc)
