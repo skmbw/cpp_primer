@@ -29,7 +29,7 @@
 
 #ifndef TEXTQUERY_H
 #define TEXTQUERY_H
-#include <tr1/memory>
+#include <memory>
 #include <string>
 #include <vector>
 #include <map>
@@ -53,10 +53,10 @@ public:
     QueryResult query(const std::string&) const; 
     void display_map();        // debugging aid: print the map
 private:
-    std::tr1::shared_ptr<std::vector<std::string> > file; // input file
+    std::shared_ptr<std::vector<std::string> > file; // input file
     // maps each word to the set of the lines in which that word appears
     std::map<std::string, 
-	         std::tr1::shared_ptr<std::set<line_no> > > wm;  
+	         std::shared_ptr<std::set<line_no> > > wm;
 
 	// canonicalizes text: removes punctuation and makes everything lower case
     static std::string cleanup_str(const std::string&);

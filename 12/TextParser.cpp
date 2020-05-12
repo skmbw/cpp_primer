@@ -2,13 +2,15 @@
 // Created by yinlei on 2020/5/12.
 //
 
+#include "TextParser.h"
+#include <vector>
 #include <map>
 #include <set>
 #include <fstream>
-#include <vector>
+#include <memory>
+#include "TextQueryResult.h"
 #include <iostream>
 #include <sstream>
-#include "TextParser.h"
 
 using std::string;
 using std::vector;
@@ -19,13 +21,7 @@ using std::cout;
 using std::endl;
 using std::istringstream;
 
-int main() {
-    // raw string 原生字符
-    ifstream ifs(R"(C:\WorkSpace\CLionProjects\cpp_primer\12\data\storyDataFile)");
-
-    TextParser parser(ifs);
-//    parser.parse(); // 执行解析，以备查询
-
+TextParser::TextParser(ifstream & ifs) {
     vector<string> bookLines; // 保存书中的所有行的内容
     map<string, set<int>> wordLineMap; // 保存单词和其所在行的映射
     string line;
@@ -37,8 +33,6 @@ int main() {
 
         string rawWord;
         while (wordStream >> rawWord) {
-//            wordLineSet.insert(word);
-
             string word;
             for (auto s : rawWord) {
                 if (!ispunct(s)) {
@@ -56,6 +50,8 @@ int main() {
             }
         }
     }
-    cout << "finished." << endl;
 }
 
+TextQueryResult TextParser::query(std::string &word) {
+
+}

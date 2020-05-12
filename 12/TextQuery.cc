@@ -31,7 +31,7 @@
 #include "make_plural.h"
 
 #include <cstddef>
-#include <tr1/memory>  // 
+#include <memory>  //
 #include <sstream>
 #include <string>
 #include <vector>
@@ -44,7 +44,7 @@
 #include <utility>
 
 using std::size_t;
-using std::tr1::shared_ptr;
+using std::shared_ptr;
 using std::istringstream;
 using std::string;
 using std::getline;
