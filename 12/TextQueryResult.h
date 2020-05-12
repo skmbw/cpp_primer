@@ -27,8 +27,9 @@ public:
         auto b = wordLinesMap->cbegin();
         auto e = wordLinesMap->cend();
         for (; b != e; ++b) {
-            int index = *b - 1; // vector的索引从0开始的
-            std::cout << bookLines->at(index) << std::endl;
+//            int index = *b - 1; // vector的索引从0开始的
+//            std::cout << bookLines->at(index) << std::endl;
+            std::cout << bookLines->at(*b) << std::endl;
         }
     }
 

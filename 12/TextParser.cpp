@@ -25,7 +25,7 @@ TextParser::TextParser(ifstream & ifs) {
     bookLines = std::make_shared<vector<string>>();
 
     string line;
-    for (int i = 1; getline(ifs, line); ++i) {
+    for (int i = 0; getline(ifs, line); ++i) {
         cout << line << endl;
         bookLines->push_back(line);
 
