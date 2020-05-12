@@ -9,6 +9,7 @@
 #include <iostream>
 #include <sstream>
 #include "TextParser.h"
+#include "TextQueryResult.h"
 
 using std::string;
 using std::vector;
@@ -25,6 +26,9 @@ int main() {
 
     TextParser parser(ifs);
 //    parser.parse(); // 执行解析，以备查询
+    string queryWord("her");
+    TextQueryResult queryResult = parser.query(queryWord);
+    queryResult.print();
 
     vector<string> bookLines; // 保存书中的所有行的内容
     map<string, set<int>> wordLineMap; // 保存单词和其所在行的映射

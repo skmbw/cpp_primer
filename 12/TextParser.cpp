@@ -52,7 +52,8 @@ TextParser::TextParser(ifstream & ifs) {
     }
 }
 
-TextQueryResult TextParser::query(std::string &word) {
-    TextQueryResult result;
+TextQueryResult TextParser::query(std::string & word) {
+    auto iterator = wordLinesMap.find(word);
+    TextQueryResult result(word, bookLines, iterator->second);
     return result;
 }
