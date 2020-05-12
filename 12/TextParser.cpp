@@ -22,12 +22,12 @@ using std::endl;
 using std::istringstream;
 
 TextParser::TextParser(ifstream & ifs) {
-    vector<string> bookLines; // 保存书中的所有行的内容
-    map<string, set<int>> wordLineMap; // 保存单词和其所在行的映射
+    bookLines = std::make_shared<vector<string>>();
+
     string line;
     for (int i = 1; getline(ifs, line); ++i) {
         cout << line << endl;
-        bookLines.push_back(line);
+        bookLines->push_back(line);
 
         istringstream wordStream(line);
 
@@ -41,17 +41,18 @@ TextParser::TextParser(ifstream & ifs) {
             }
             cout << word << endl;
 
-            auto existIterator = wordLineMap.find(word);
-            if (existIterator == wordLineMap.end()) { // 不存在
-                set<int> wordLineSet{i}; // 列表初始化
-                wordLineMap.insert({word, wordLineSet});
+            auto existIterator = wordLinesMap.find(word);
+            if (existIterator == wordLinesMap.end()) { // 不存在
+                auto wordLineSet = std::make_shared<set<int>>(set<int>{i});
+                wordLinesMap.insert({word, wordLineSet});
             } else {
-                existIterator->second.insert(i);
+                existIterator->second->insert(i);
             }
         }
     }
 }
 
 TextQueryResult TextParser::query(std::string &word) {
-
+    TextQueryResult result;
+    return result;
 }

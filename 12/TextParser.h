@@ -20,8 +20,8 @@ public:
     TextQueryResult query(std::string & word);
 private:
 //    std::ifstream & ifs;
-    std::shared_ptr<std::vector<std::string>> bookLines;
-    std::map<std::string, std::shared_ptr<std::set<int>>> wordLinesMap;
+    std::shared_ptr<std::vector<std::string>> bookLines; // 保存书中的所有行的内容
+    std::map<std::string, std::shared_ptr<std::set<int>>> wordLinesMap; // 保存单词和其所在行的映射
 };
 
 
