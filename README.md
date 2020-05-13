@@ -33,7 +33,7 @@ sudo ln -s /usr/include/c++/7.1.0/x86_64-pc-linux-gnu x86_64-redhat-linux
 
 ### sh.exe was found in your PATH，sh.exe must not be in your path
 * cmake中添加 -DCMAKE_SH="CMAKE_SH-NOTFOUND" 这个参数
-* 或者再CMakeLists.txt中 set(DCMAKE_SH="CMAKE_SH-NOTFOUND")
+* 或者在CMakeLists.txt中 set(DCMAKE_SH="CMAKE_SH-NOTFOUND")
 
 ### clion无法使用vs toolchains的问题
 * String.h影响了vs的头文件导入，导致不能导入正确的string.h，导致cstring中很多函数，不在全局命名空间中。将其改成Strings.h，就OK了

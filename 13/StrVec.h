@@ -89,7 +89,7 @@ inline
 StrVec::~StrVec() { free(); }
 
 inline
-std::pair<std::string*, std::string*> 
+std::pair<std::string*, std::string*>
 StrVec::alloc_n_copy(const std::string *b, const std::string *e)
 {
 	// allocate space to hold as many elements as are in the range
