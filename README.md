@@ -24,10 +24,13 @@
 但是这个文件夹,引用了很多源码文件夹里的头文件，所以重新解压gcc-7.1.0，所以gcc-7.1.0这个文件夹不能删除。
 * 根据规范，c++/7.1.0 下需要含有文件夹名字是x86_64-redhat-linux的文件夹，所以软链接
 sudo ln -s /usr/include/c++/7.1.0/x86_64-pc-linux-gnu x86_64-redhat-linux
+
 ### gnome登录的时候会有声音
 * 是因为更新打开了屏幕阅读器，点击右上角的小人-屏幕阅读器，关掉就好了
+
 ### clang的别名
 * clang clang++ clang-cl clang-cpp都是clang-10的别名，也就是clang和clang++是一样的
+
 ### sh.exe was found in your PATH，sh.exe must not be in your path
 * cmake中添加 -DCMAKE_SH="CMAKE_SH-NOTFOUND" 这个参数
 * 或者再CMakeLists.txt中 set(DCMAKE_SH="CMAKE_SH-NOTFOUND")
@@ -44,3 +47,6 @@ sudo ln -s /usr/include/c++/7.1.0/x86_64-pc-linux-gnu x86_64-redhat-linux
 
 ### 如果要在clion配置给main函数传参
 * 在程序参数中，选择+，选择内置的宏变量，然后再写具体的参数。运行目录一般不需要写
+
+### clion指定include的目录
+* 在CMakeLists.txt文件中 include_directories(SYSTEM "/foo/bar")，这样就可以将/foo/bar目录下的头文件引入了
