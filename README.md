@@ -50,3 +50,7 @@ sudo ln -s /usr/include/c++/7.1.0/x86_64-pc-linux-gnu x86_64-redhat-linux
 
 ### clion指定include的目录
 * 在CMakeLists.txt文件中 include_directories(SYSTEM "/foo/bar")，这样就可以将/foo/bar目录下的头文件引入了
+
+### class与struct
+* class成员默认是private的，struct成员默认是public的
+* class继承，默认是private继承，struct继承，默认是public继承
