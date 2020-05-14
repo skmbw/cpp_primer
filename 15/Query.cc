@@ -29,8 +29,9 @@
 
 #include "Query.h"
 #include "TextQuery.h"
+#include "QueryResult.h"
 
-#include <tr1/memory>
+#include <memory>
 using std::tr1::shared_ptr; 
 
 #include <set>
