@@ -54,3 +54,10 @@ sudo ln -s /usr/include/c++/7.1.0/x86_64-pc-linux-gnu x86_64-redhat-linux
 ### class与struct
 * class成员默认是private的，struct成员默认是public的
 * class继承，默认是private继承，struct继承，默认是public继承
+
+### CMakeLists.txt手动编译，生成可执行文件
+* 进入项目的cmake-build-debug，然后进入对应的项目目录，然后make，就开始编译了
+
+### linker command failed with exit code 1 (use -v to see invocation)
+* 这个没有main方法，所以不能生成可执行程序
+* 方法未定义，是因为真的没有定义，只写了.h头文件，没有在cpp中实现

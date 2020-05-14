@@ -9,6 +9,7 @@
 
 class ParentClass {
 public:
+    ParentClass() = default;
     std::string publicParentString;
     void publicParentMethod();
 
@@ -18,7 +19,7 @@ protected:
 
 private:
     std::string privateParentString;
-    void pirvateParentMethod();
+    void privateParentMethod();// {}; // 内联实现
 };
 
 

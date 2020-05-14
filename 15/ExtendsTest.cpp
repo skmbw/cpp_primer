@@ -31,3 +31,10 @@ void testExtends() {
     ChildClassPrivateExtend childClassPrivateExtend;
 }
 
+// linker command failed with exit code 1 (use -v to see invocation)
+// 这个没有main方法，所以不能生成可执行程序
+// testExtends 要在main上面定义
+int main() {
+    testExtends();
+}
+

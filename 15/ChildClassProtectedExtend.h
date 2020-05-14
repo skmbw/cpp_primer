@@ -11,6 +11,7 @@
 // 继承访问限制，不影响子类方法，访问父类成员，原来是什么访问限制，现在还是什么
 class ChildClassProtectedExtend : protected ParentClass {
 public:
+    ChildClassProtectedExtend() = default;
     void childPublicMethod() {
         // protected继承，可以访问父类的public成员
         publicParentMethod();

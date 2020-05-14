@@ -12,6 +12,7 @@
 // 就是在子类内部可以访问父类的public和protected受保护成员，但是子类对象，仍然不能访问父类的受保护成员
 class ChildClassPublicExtend : public ParentClass {
 public:
+    ChildClassPublicExtend() = default;
     void childPublicMethod() {
         // public继承，可以访问父类的public成员
         publicParentMethod();
