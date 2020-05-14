@@ -32,7 +32,7 @@
 #include "QueryResult.h"
 
 #include <memory>
-using std::tr1::shared_ptr; 
+using std::shared_ptr;
 
 #include <set>
 using std::set;

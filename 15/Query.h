@@ -35,7 +35,7 @@
 #include <iostream>
 #include <fstream>
 #include <sstream>
-#include <tr1/memory>
+#include <memory>
 
 // abstract class acts as a base class for concrete query types; all members are private
 class Query_base {
@@ -64,8 +64,8 @@ public:
                             { return q->eval(t); }
 	std::string rep() const { return q->rep(); }
 private:
-    Query(std::tr1::shared_ptr<Query_base> query): q(query) { }
-    std::tr1::shared_ptr<Query_base> q;
+    Query(std::shared_ptr<Query_base> query): q(query) { }
+    std::shared_ptr<Query_base> q;
 };
 inline 
 std::ostream &
@@ -137,12 +137,12 @@ inline Query operator&(const Query &lhs, const Query &rhs)
 
 inline Query operator|(const Query &lhs, const Query &rhs)
 {
-    return std::tr1::shared_ptr<Query_base>(new OrQuery(lhs, rhs));
+    return std::shared_ptr<Query_base>(new OrQuery(lhs, rhs));
 }
 
 inline Query operator~(const Query &operand)
 {
-    return std::tr1::shared_ptr<Query_base>(new NotQuery(operand));
+    return std::shared_ptr<Query_base>(new NotQuery(operand));
 }
 
 std::ifstream& open_file(std::ifstream&, const std::string&);
