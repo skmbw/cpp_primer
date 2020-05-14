@@ -132,7 +132,7 @@ class OrQuery: public BinaryQuery {
 
 inline Query operator&(const Query &lhs, const Query &rhs)
 {
-    return std::tr1::shared_ptr<Query_base>(new AndQuery(lhs, rhs));
+    return std::shared_ptr<Query_base>(new AndQuery(lhs, rhs));
 }
 
 inline Query operator|(const Query &lhs, const Query &rhs)
