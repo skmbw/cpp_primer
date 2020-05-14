@@ -57,6 +57,8 @@ sudo ln -s /usr/include/c++/7.1.0/x86_64-pc-linux-gnu x86_64-redhat-linux
 
 ### CMakeLists.txt手动编译，生成可执行文件
 * 进入项目的cmake-build-debug，然后进入对应的项目目录，然后make，就开始编译了
+* ~~源码文件，只要在一个可执行文件中引入了原文件，就会被编译成.o对象文件，在其他可执行文件中需要，也不需要再次引入原文件~~
+* 上面说的不对，还是需要引入的，对于CMakeLists.txt需要引入，如果是直接写makefile文件，就不需要重新编译了，编译后，可以在多个可执行文件引入
 
 ### linker command failed with exit code 1 (use -v to see invocation)
 * 这个没有main方法，所以不能生成可执行程序
