@@ -8,7 +8,7 @@
 * [cmakelists学习](https://blog.csdn.net/zhuiyunzhugang/article/details/88142908)
 
 ### 子项目调试
-* 在各个子项目的CMakeLists.txt中配置号add_executable后，选择对应的可执行程序，进行debug即可
+* 在各个子项目的CMakeLists.txt中配置好add_executable后，选择对应的可执行程序，进行debug即可
 
 ### centos7 配置预编译的suse的clang 10.0.0
 * 首先 ./clang++ -v 看clang选择的是哪个gcc
