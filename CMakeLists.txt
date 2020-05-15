@@ -21,4 +21,25 @@ add_subdirectory(15)
 add_subdirectory(16)
 add_subdirectory(17)
 add_subdirectory(18)
+# 添加子目录
+#ADD_SUBDIRECTORY(src_dir [binary_dir] [EXCLUDE_FROM_ALL])
+#向当前工程添加存放源文件的子目录，并可以指定中间二进制和目标二进制的存放位置
+#EXCLUDE_FROM_ALL含义：将这个目录从编译过程中排除
 add_subdirectory(19)
+
+# 生成可执行文件
+#ADD_EXECUTABLE(可执行文件名  生成该可执行文件的源文件)
+
+# 查找当前目录下的所有的源文件，并保存到SOURCE_DIRS宏变量中，后面就可以使用了
+#aux_source_directory(. SOURCE_DIRS)
+#add_executable(aa ${SOURCE_DIRS})
+
+# 添加链接库，aa程序需要一个名为aa_lib的链接库
+#target_link_libraries(aa aa_lib)
+
+# add_library 将 src 目录中的源文件编译为静态链接库
+#add_library(aa_lib ${SOURCE_DIRS})
+#add_library(aa shared ${source_dirs})
+#ADD_LIBRARY(libname [SHARED|STATIC|MODULE] [EXCLUDE_FROM_ALL] source1 source2 ... sourceN)
+#生成动态静态库，例：
+#ADD_LIBRARY(hello SHARED ${LIBHELLO_SRC})
