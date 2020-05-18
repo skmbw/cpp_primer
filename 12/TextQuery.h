@@ -44,7 +44,7 @@
  *   display_map: a debugging routine that will print the contents
  *                of the lookup mape
 */
-
+// 在.h头文件中使用预生命，可以减少头文件的导入
 class QueryResult; // declaration needed for return type in the query function
 class TextQuery {
 public:
