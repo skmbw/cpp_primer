@@ -66,5 +66,5 @@ sudo ln -s /usr/include/c++/7.1.0/x86_64-pc-linux-gnu x86_64-redhat-linux
 
 ### 安装boost库
 * 解压文件，进入，执行 ./bootstrap.sh 可以指定--prefix参数，可以使用--help查询
-* 然后使用 sudo ./b2 headers install 安装,不加sudo可能没有权限写文件到对应目录
+* 然后使用 sudo ./b2 headers ~~install~~ 安装,不加sudo可能没有权限写文件到对应目录，不需要加install
 * ubuntu 18.04安装后，so共享库在 /usr/local/lib下面,头文件在 /usr/local/include/boost/下面
