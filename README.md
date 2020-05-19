@@ -63,3 +63,8 @@ sudo ln -s /usr/include/c++/7.1.0/x86_64-pc-linux-gnu x86_64-redhat-linux
 ### linker command failed with exit code 1 (use -v to see invocation)
 * 这个没有main方法，所以不能生成可执行程序
 * 方法未定义，是因为真的没有定义，只写了.h头文件，没有在cpp中实现
+
+### 安装boost库
+* 解压文件，进入，执行 ./bootstrap.sh 可以指定--prefix参数，可以使用--help查询
+* 然后使用 sudo ./b2 headers install 安装,不加sudo可能没有权限写文件到对应目录
+* ubuntu 18.04安装后，so共享库在 /usr/local/lib下面,头文件在 /usr/local/include/boost/下面
