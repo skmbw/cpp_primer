@@ -68,3 +68,7 @@ sudo ln -s /usr/include/c++/7.1.0/x86_64-pc-linux-gnu x86_64-redhat-linux
 * 解压文件，进入，执行 ./bootstrap.sh 可以指定--prefix参数，可以使用--help查询
 * 然后使用 sudo ./b2 headers ~~install~~ 安装,不加sudo可能没有权限写文件到对应目录，不需要加install
 * ubuntu 18.04安装后，so共享库在 /usr/local/lib下面,头文件在 /usr/local/include/boost/下面
+
+### 全家桶更新
+* 如果已经激活了，是可以更新的，更新就会下载patches文件
+* 在linux上面，可能没有对应目录的权限，记得将 ex. idea-2020.1, chown yinlei idea-2020-1 -R
