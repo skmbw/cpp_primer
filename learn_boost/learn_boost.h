@@ -7,6 +7,7 @@
 
 #include "boost/make_unique.hpp"
 #include <memory>
+#include "curl/curl.h"
 
 class learn_boost {
 private:
