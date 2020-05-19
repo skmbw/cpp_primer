@@ -43,3 +43,5 @@ add_subdirectory(19)
 #ADD_LIBRARY(libname [SHARED|STATIC|MODULE] [EXCLUDE_FROM_ALL] source1 source2 ... sourceN)
 #生成动态静态库，例：
 #ADD_LIBRARY(hello SHARED ${LIBHELLO_SRC})
+
+add_subdirectory(learn_boost)
