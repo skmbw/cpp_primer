@@ -47,6 +47,8 @@ sudo ln -s /usr/include/c++/7.1.0/x86_64-pc-linux-gnu x86_64-redhat-linux
 
 ### 如果要在clion配置给main函数传参
 * 在程序参数中，选择+，选择内置的宏变量，然后再写具体的参数。运行目录一般不需要写
+* 如果要给main函数传一个string值，直接在program arguments中填入一个string值就好了；如："yinlei"
+* 如果要添加文件的路径，可以选择使用宏变量，更简洁
 
 ### clion指定include的目录
 * 在CMakeLists.txt文件中 include_directories(SYSTEM "/foo/bar")，这样就可以将/foo/bar目录下的头文件引入了
