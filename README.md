@@ -74,3 +74,21 @@ sudo ln -s /usr/include/c++/7.1.0/x86_64-pc-linux-gnu x86_64-redhat-linux
 ### 全家桶更新
 * 如果已经激活了，是可以更新的，更新就会下载patches文件
 * 在linux上面，可能没有对应目录的权限，记得将 ex. idea-2020.1, chown yinlei idea-2020-1 -R
+
+### ubuntu更新使用国内的阿里云/网易的源
+* 先备份原来的 
+`sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak` 
+* 然后 `sudo vi /etc/apt/sources.list` 修改成如下
+`deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse`
+* 最后记得 `sudo apt update` 更新
+* 如果是ros的arm架构安装的ubuntu，那么url中的/ubuntu/-->/ubuntu-ports/，记得哦
+* ros中国科大的ubuntu镜像，同时含有amd64和arm的源
