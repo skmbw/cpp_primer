@@ -79,7 +79,8 @@ sudo ln -s /usr/include/c++/7.1.0/x86_64-pc-linux-gnu x86_64-redhat-linux
 * 先备份原来的 
 `sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak` 
 * 然后 `sudo vi /etc/apt/sources.list` 修改成如下
-`deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse
+```text
+deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse
 deb http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse
 deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse
 deb http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse
@@ -88,7 +89,20 @@ deb-src http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiv
 deb-src http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse
 deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse
 deb-src http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse
-deb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse`
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse
+```
 * 最后记得 `sudo apt update` 更新
 * 如果是ros的arm架构安装的ubuntu，那么url中的/ubuntu/-->/ubuntu-ports/，记得哦
+```text
+deb http://mirrors.aliyun.com/ubuntu-ports/ trusty main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu-ports/ trusty-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu-ports/ trusty-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu-ports/ trusty-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu-ports/ trusty-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu-ports/ trusty main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu-ports/ trusty-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu-ports/ trusty-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu-ports/ trusty-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu-ports/ trusty-backports main restricted universe multiverse
+```
 * ros中国科大的ubuntu镜像，同时含有amd64和arm的源
