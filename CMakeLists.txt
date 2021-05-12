@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.7)
 project(cpp_primer)
 set(CMAKE_CXX_STANDARD 14)
-
+# 添加这个后，子目录中的CMakeLists.txt也会被编译，这样就是一整个项目了，子目录是项目中的一个模块
 include_directories(. ./1 ./2 ./3 ./4 ./5 ./6 ./7 ./8 ./9 ./10 ./11 ./12 ./13 ./14 ./15 ./16 ./17 ./18 ./19 ./learn_boost)
 add_subdirectory(1)
 add_subdirectory(2)
