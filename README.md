@@ -48,6 +48,8 @@ sudo ln -s /usr/include/c++/7.1.0/x86_64-pc-linux-gnu x86_64-redhat-linux
 
 ### 如果要在clion配置给main函数传参
 * 在程序参数中，选择+，选择内置的宏变量，然后再写具体的参数。运行目录一般不需要写
+* 如果要给main函数传一个string值，直接在program arguments中填入一个string值就好了；如："yinlei"
+* 如果要添加文件的路径，可以选择使用宏变量，更简洁
 
 ### clion指定include的目录
 * 在CMakeLists.txt文件中 include_directories(SYSTEM "/foo/bar")，这样就可以将/foo/bar目录下的头文件引入了
@@ -64,3 +66,44 @@ sudo ln -s /usr/include/c++/7.1.0/x86_64-pc-linux-gnu x86_64-redhat-linux
 ### linker command failed with exit code 1 (use -v to see invocation)
 * 这个没有main方法，所以不能生成可执行程序
 * 方法未定义，是因为真的没有定义，只写了.h头文件，没有在cpp中实现
+
+### 安装boost库
+* 解压文件，进入，执行 ./bootstrap.sh 可以指定--prefix参数，可以使用--help查询
+* 然后使用 sudo ./b2 headers ~~install~~ 安装,不加sudo可能没有权限写文件到对应目录，不需要加install
+* ubuntu 18.04安装后，so共享库在 /usr/local/lib下面,头文件在 /usr/local/include/boost/下面
+
+### 全家桶更新
+* 如果已经激活了，是可以更新的，更新就会下载patches文件
+* 在linux上面，可能没有对应目录的权限，记得将 ex. idea-2020.1, chown yinlei idea-2020-1 -R
+
+### ubuntu更新使用国内的阿里云/网易的源
+* 先备份原来的 
+`sudo cp /etc/apt/sources.list /etc/apt/sources.list.bak` 
+* 然后 `sudo vi /etc/apt/sources.list` 修改成如下
+```text
+deb http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu/ trusty-backports main restricted universe multiverse
+```
+* 最后记得 `sudo apt update` 更新
+* 如果是ros的arm架构安装的ubuntu，那么url中的/ubuntu/-->/ubuntu-ports/，记得哦
+```text
+deb http://mirrors.aliyun.com/ubuntu-ports/ trusty main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu-ports/ trusty-security main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu-ports/ trusty-updates main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu-ports/ trusty-proposed main restricted universe multiverse
+deb http://mirrors.aliyun.com/ubuntu-ports/ trusty-backports main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu-ports/ trusty main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu-ports/ trusty-security main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu-ports/ trusty-updates main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu-ports/ trusty-proposed main restricted universe multiverse
+deb-src http://mirrors.aliyun.com/ubuntu-ports/ trusty-backports main restricted universe multiverse
+```
+* ros中国科大的ubuntu镜像，同时含有amd64和arm的源

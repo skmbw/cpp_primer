@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.7)
 project(cpp_primer)
 set(CMAKE_CXX_STANDARD 14)
 
-include_directories(. ./1 ./2 ./3 ./4 ./5 ./6 ./7 ./8 ./9 ./10 ./11 ./12 ./13 ./14 ./15 ./16 ./17 ./ 18 ./19)
+include_directories(. ./1 ./2 ./3 ./4 ./5 ./6 ./7 ./8 ./9 ./10 ./11 ./12 ./13 ./14 ./15 ./16 ./17 ./18 ./19 ./learn_boost)
 add_subdirectory(1)
 add_subdirectory(2)
 add_subdirectory(3)
@@ -43,3 +43,5 @@ add_subdirectory(19)
 #ADD_LIBRARY(libname [SHARED|STATIC|MODULE] [EXCLUDE_FROM_ALL] source1 source2 ... sourceN)
 #生成动态静态库，例：
 #ADD_LIBRARY(hello SHARED ${LIBHELLO_SRC})
+
+add_subdirectory(learn_boost)
