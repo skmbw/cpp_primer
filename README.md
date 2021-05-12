@@ -1,4 +1,5 @@
 # C++ Primer 学习笔记
+* 这个是书中的例子的代码实现，不是课后习题的答案。
 
 ### CMakeList.txt 多级目录设置
 * [cmakelists多级目录设置](https://blog.csdn.net/ktigerhero3/article/details/70313350)
