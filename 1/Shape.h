@@ -20,16 +20,16 @@ double round(double x) {
 
 class Shape {
 public:
-    void printArea() {};
+    virtual void printArea() {};
 };
 
 class Circle: public Shape {
 public:
     Circle() = default;
-    Circle(const double radio): radio(radio) {}
+    explicit Circle(const double radio): radio(radio) {}
 
     double radio = 0;
-    void printArea() {
+    void printArea() override {
         std::cout << round(M_PI * radio * radio) << std::endl;
     }
 };
@@ -42,7 +42,7 @@ public:
     double length = 0;
     double width = 0;
 
-    void printArea() {
+    void printArea() override {
         std::cout << round(length * width) << std::endl;
     }
 };
@@ -58,7 +58,7 @@ public:
     double height = 0;
 
     // 打印面积的成员函数
-    void printArea() {
+    void printArea() override {
         std::cout << round(bottom * height / 2) << std::endl;
     }
 };

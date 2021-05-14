@@ -15,12 +15,12 @@ int main() {
 
     std::cin >> radio >> rect_height >> rect_width >> tri_bottom >> tri_height;
 
-    Circle circle(radio);
+    Shape circle = Circle(radio);
     circle.printArea();
 
-    Rectangle rectangle(rect_height, rect_width);
+    Shape rectangle = Rectangle(rect_height, rect_width);
     rectangle.printArea();
 
-    Triangle triangle(tri_bottom, tri_height);
+    Shape triangle = Triangle(tri_bottom, tri_height);
     triangle.printArea();
 }
