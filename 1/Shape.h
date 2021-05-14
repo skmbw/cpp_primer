@@ -8,6 +8,12 @@
 #include <iostream>
 #include <cmath>
 
+/**
+ * 对double进行四舍五入，保留n位小数
+ * @param t 待四舍五入的值
+ * @param n 小数点后的位数
+ * @return 按要求四舍五入后的值
+ */
 double fl(double t, int n) {
     double m = pow(10, n);
     double result = floor(t * m + 0.5) / m;
