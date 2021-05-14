@@ -15,6 +15,7 @@ int main() {
 
     std::cin >> radio >> rect_height >> rect_width >> tri_bottom >> tri_height;
 
+    // 以下是使用引用，来进行C++的虚方法的多态调用
     Circle rc(radio);
     Shape &circle = rc;
     circle.printArea();
@@ -26,4 +27,16 @@ int main() {
     Triangle angle(tri_bottom, tri_height);
     Shape &triangle = angle;
     triangle.printArea();
+
+    // 以下是使用指针来进行C++的虚方法的多态调用
+//    Shape *shape;
+//
+//    shape = &rc;
+//    shape->printArea();
+//
+//    shape = &rect;
+//    shape->printArea();
+//
+//    shape = &angle;
+//    shape->printArea();
 }
