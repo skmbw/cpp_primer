@@ -5,6 +5,13 @@
 #include "Shape.h"
 
 int main() {
+//    int x = 999;
+//    int countx = 0;
+//    while (x) {
+//        countx++;
+//        x = x & (x - 1);
+//    }
+//    std::cout<< countx << std::endl;
     double radio = 0;
 
     double rect_height = 0;
