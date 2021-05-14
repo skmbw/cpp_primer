@@ -17,11 +17,9 @@ int main() {
 
     Circle rc(radio);
     Shape &circle = rc;
-//    circle = Circle(radio);
     circle.printArea();
 
     Rectangle rect(rect_height, rect_width);
-//    Rectangle rectangle(rect_height, rect_width);
     Shape &rectangle = rect;
     rectangle.printArea();
 
