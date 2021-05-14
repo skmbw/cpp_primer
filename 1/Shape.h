@@ -23,7 +23,7 @@ public:
     void printArea() {};
 };
 
-class Circle: Shape {
+class Circle: public Shape {
 public:
     Circle() = default;
     Circle(const double radio): radio(radio) {}
@@ -34,7 +34,7 @@ public:
     }
 };
 
-class Rectangle: Shape {
+class Rectangle: public Shape {
 public:
     Rectangle() = default;
     Rectangle(const double length, const double width): length(length), width(width) {}
@@ -47,7 +47,7 @@ public:
     }
 };
 
-class Triangle: Shape {
+class Triangle: public Shape {
 public:
     // 构造函数
     Triangle() = default;
