@@ -14,7 +14,8 @@ double fl(double t, int n) {
     return result;
 }
 
-double round(double x) {
+// 如果使用round这个方法名，会覆盖cmath中的同名函数
+double rd(double x) {
     return fl(x, 2);
 }
 
@@ -30,7 +31,7 @@ public:
 
     double radio = 0;
     void printArea() override {
-        std::cout << round(M_PI * radio * radio) << std::endl;
+        std::cout << rd(M_PI * radio * radio) << std::endl;
     }
 };
 
@@ -43,7 +44,7 @@ public:
     double width = 0;
 
     void printArea() override {
-        std::cout << round(length * width) << std::endl;
+        std::cout << rd(length * width) << std::endl;
     }
 };
 
@@ -59,7 +60,7 @@ public:
 
     // 打印面积的成员函数
     void printArea() override {
-        std::cout << round(bottom * height / 2) << std::endl;
+        std::cout << rd(bottom * height / 2) << std::endl;
     }
 };
 #endif //CPP_PRIMER_SHAPE_H
