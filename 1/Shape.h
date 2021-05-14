@@ -35,10 +35,12 @@ public:
     Circle() = default;
     explicit Circle(const double radio): radio(radio) {}
 
-    double radio = 0;
     void printArea() override {
         std::cout << rd(M_PI * radio * radio) << std::endl;
     }
+
+private:
+    double radio = 0;
 };
 
 class Rectangle: public Shape {
@@ -46,12 +48,13 @@ public:
     Rectangle() = default;
     Rectangle(const double length, const double width): length(length), width(width) {}
 
-    double length = 0;
-    double width = 0;
-
     void printArea() override {
         std::cout << rd(length * width) << std::endl;
     }
+
+private:
+    double length = 0;
+    double width = 0;
 };
 
 class Triangle: public Shape {
@@ -60,13 +63,14 @@ public:
     Triangle() = default;
     Triangle(const double bottom, const double height): bottom(bottom), height(height) {}
 
-    // 属性
-    double bottom = 0;
-    double height = 0;
-
     // 打印面积的成员函数
     void printArea() override {
         std::cout << rd(bottom * height / 2) << std::endl;
     }
+
+private:
+    // 属性
+    double bottom = 0;
+    double height = 0;
 };
 #endif //CPP_PRIMER_SHAPE_H
