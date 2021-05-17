@@ -1,5 +1,7 @@
 # C++ Primer 学习笔记
 * 这个是书中的例子的代码实现，不是课后习题的答案。
+* CMakeLists.txt文件是cmake的配置文件（配置整个项目的源码、头文件、编译打包安装等），用来生成Makefile文件的，生成的Makefile文件在cmake-build-debug这个目录下
+* 进入这个目录，在进入子目录，然后使用make命令就可以编译了，make install安装
 
 ### CMakeList.txt 多级目录设置
 * [cmakelists多级目录设置](https://blog.csdn.net/ktigerhero3/article/details/70313350)
