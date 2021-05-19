@@ -31,8 +31,14 @@ sudo ln -s /usr/include/c++/7.1.0/x86_64-pc-linux-gnu x86_64-redhat-linux
 ### gnome登录的时候会有声音
 * 是因为更新打开了屏幕阅读器，点击右上角的小人-屏幕阅读器，关掉就好了
 
-### clang的别名
+### clang调试环境的安装
 * clang clang++ clang-cl clang-cpp都是clang-10的别名，也就是clang和clang++是一样的
+* sudo apt install clang
+* sudo apt install lldb
+* lldb和clang是分开的，要调试的话，需要安装lldb
+
+### vscode的环境配置
+* 如果要指定includePath，需要c_cpp_properties.json这个配置文件，这个文件中用来配置头文件路径的
 
 ### sh.exe was found in your PATH，sh.exe must not be in your path
 * cmake中添加 -DCMAKE_SH="CMAKE_SH-NOTFOUND" 这个参数
