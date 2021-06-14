@@ -115,3 +115,6 @@ deb-src http://mirrors.aliyun.com/ubuntu-ports/ trusty-proposed main restricted 
 deb-src http://mirrors.aliyun.com/ubuntu-ports/ trusty-backports main restricted universe multiverse
 ```
 * ros中国科大的ubuntu镜像，同时含有amd64和arm的源
+
+### Git报错解决：OpenSSL SSL_read: Connection was reset, errno 10054 错误解决
+* git config --global http.sslVerify "false"
