@@ -35,6 +35,8 @@ void testExtends() {
 // 这个没有main方法，所以不能生成可执行程序
 // testExtends 要在main上面定义
 int main() {
+//    float aa[2];
+//    std::cout << sizeof(aa) / sizeof(aa[0]) << std::endl;
     testExtends();
 }
 

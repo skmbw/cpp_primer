@@ -1,5 +1,7 @@
 # C++ Primer 学习笔记
 * 这个是书中的例子的代码实现，不是课后习题的答案。
+* CMakeLists.txt文件是cmake的配置文件（配置整个项目的源码、头文件、编译打包安装等），用来生成Makefile文件的，生成的Makefile文件在cmake-build-debug这个目录下
+* 进入这个目录，在进入子目录，然后使用make命令就可以编译了，make install安装
 
 ### CMakeList.txt 多级目录设置
 * [cmakelists多级目录设置](https://blog.csdn.net/ktigerhero3/article/details/70313350)
@@ -29,8 +31,14 @@ sudo ln -s /usr/include/c++/7.1.0/x86_64-pc-linux-gnu x86_64-redhat-linux
 ### gnome登录的时候会有声音
 * 是因为更新打开了屏幕阅读器，点击右上角的小人-屏幕阅读器，关掉就好了
 
-### clang的别名
+### clang调试环境的安装
 * clang clang++ clang-cl clang-cpp都是clang-10的别名，也就是clang和clang++是一样的
+* sudo apt install clang
+* sudo apt install lldb
+* lldb和clang是分开的，要调试的话，需要安装lldb
+
+### vscode的环境配置
+* 如果要指定includePath，需要c_cpp_properties.json这个配置文件，这个文件中用来配置头文件路径的
 
 ### sh.exe was found in your PATH，sh.exe must not be in your path
 * cmake中添加 -DCMAKE_SH="CMAKE_SH-NOTFOUND" 这个参数
@@ -107,3 +115,7 @@ deb-src http://mirrors.aliyun.com/ubuntu-ports/ trusty-proposed main restricted 
 deb-src http://mirrors.aliyun.com/ubuntu-ports/ trusty-backports main restricted universe multiverse
 ```
 * ros中国科大的ubuntu镜像，同时含有amd64和arm的源
+
+### Git报错解决：OpenSSL SSL_read: Connection was reset, errno 10054 错误解决
+* git config --global http.sslVerify "false"
+* cygwin中需要安装cmake，make，tcl，gcc，g++

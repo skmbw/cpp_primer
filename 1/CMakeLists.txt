@@ -4,7 +4,7 @@ project(cpp_primer_1)
 set(CMAKE_CXX_STANDARD 14)
 
 # set(SOURCE_FILES add.cc add_item.cc)
-add_executable(add.exe add.cc Shape.cpp)
+add_executable(add.exe add.cc)
 add_executable(add_item add_item.cc)
 add_executable(add_item2 add_item2.cc)
 add_executable(avg_price avg_price.cc)
