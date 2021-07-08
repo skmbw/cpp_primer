@@ -59,6 +59,12 @@ sudo ln -s /usr/include/c++/7.1.0/x86_64-pc-linux-gnu x86_64-redhat-linux
 * 如果要给main函数传一个string值，直接在program arguments中填入一个string值就好了；如："yinlei"
 * 如果要添加文件的路径，可以选择使用宏变量，更简洁
 
+# CLion debug时main函数的程序参数设置
+* 在Debug按钮旁的方框内->Edit Configuartions->找到你的程序->Program Arguments，填入你的参数-> Apply，确定退出
+* 然后就可以点击Debug按钮，开始debug了
+* 如果不需要debug调试，只是运行，那就点击run按钮。
+* 也可以在命令行中，执行。Terminal->以Demo2为例，cd Demo2->cd cmake-build-debug-> Demo2.exe 2 3 回车执行
+
 ### clion指定include的目录
 * 在CMakeLists.txt文件中 include_directories(SYSTEM "/foo/bar")，这样就可以将/foo/bar目录下的头文件引入了
 
@@ -115,3 +121,7 @@ deb-src http://mirrors.aliyun.com/ubuntu-ports/ trusty-proposed main restricted 
 deb-src http://mirrors.aliyun.com/ubuntu-ports/ trusty-backports main restricted universe multiverse
 ```
 * ros中国科大的ubuntu镜像，同时含有amd64和arm的源
+
+### Git报错解决：OpenSSL SSL_read: Connection was reset, errno 10054 错误解决
+* git config --global http.sslVerify "false"
+* cygwin中需要安装cmake，make，tcl，gcc，g++

@@ -27,7 +27,10 @@
  * 	Fax: (201) 236-3290
 */ 
 
+#include "iostream"
+
 int main() 
 {
+    std::cout << "hello world" << std::endl;
 	return 0;
 }
