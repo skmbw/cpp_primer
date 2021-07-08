@@ -10,20 +10,20 @@
 /**
  * curl返回数据的回调函数。可以直接返回每次的数据量，不处理数据。使用string接收和处理。
  * 一旦收到需要保存的数据，libcurl 就会立即调用此回调函数。对于大多数传输，此回调将被调用多次，每次调用都会传递另一块数据。
- * ptr 指向传递的数据，该数据的大小为 data_length；size大小始终为 1。
+ * ptr 指向传递的数据，该数据的大小为 nmemb；size大小始终为 1。
  * 关于该函数的使用说明可以参考 CURLOPT_WRITEFUNCTION explained 和 getinmemory.c
  *
  * @param ptr 指向传递的数据的指针，保存所有的数据。
- * @param size 每次都是1，size * data_length 表示返回的数据长度
- * @param data_length 每次返回的内容的长度
+ * @param size 每次都是1，size * nmemb 表示返回的数据长度
+ * @param nmemb 每次返回的内容的长度
  * @param stream 数据流，本次收到的数据
  * @return
  */
-size_t write_data(void *ptr, size_t size, size_t data_length, void *stream) {
+size_t write_data(void *ptr, size_t size, size_t nmemb, void *stream) {
     auto *str = dynamic_cast<std::string *>((std::string *)stream); // 强制转换
-    str->append((char*) ptr, size * data_length); // size * mem 表示接受数据的多少
+    str->append((char*) ptr, size * nmemb); // size * mem 表示接受数据的多少
 //    std::cout << *str << std::endl;
-    return size * data_length;
+    return size * nmemb;
 }
 
 int main() {
