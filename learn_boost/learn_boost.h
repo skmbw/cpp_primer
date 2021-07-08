@@ -11,7 +11,9 @@
 
 class learn_boost {
 private:
-    std::unique_ptr<std::string> uniquePtr = boost::make_unique<std::string>()
+    std::unique_ptr<std::string> uniquePtr = boost::make_unique<std::string>();
+public:
+    std::string str = "123";
 };
 
 
