@@ -6,6 +6,7 @@
 #include <iostream>
 #include <string>
 #include "jsoncpp/json/json.h"
+#include "myhtml/api.h"
 
 /**
  * curl返回数据的回调函数。可以直接返回每次的数据量，不处理数据。使用string接收和处理。
@@ -26,6 +27,12 @@ size_t write_data(void *ptr, size_t size, size_t nmemb, void *stream) {
     return size * nmemb;
 }
 
+mystatus_t serialization_callback(const char* data, size_t len, void* ctx)
+{
+    printf("%.*s", (int)len, data);
+    return MyCORE_STATUS_OK;
+}
+
 int main() {
     learn_boost learnBoost;
     std::cout << learnBoost.str << std::endl;
@@ -43,6 +50,38 @@ int main() {
     curl_easy_cleanup(curl); // 清理，释放资源
     if (result == CURLcode::CURLE_OK) {
         std::cout << response << std::endl;
+
+        // 初始化my html
+        myhtml_t *myHtml = myhtml_create();
+        myhtml_init(myHtml, MyHTML_OPTIONS_DEFAULT, 1, 0);
+        // 初始化my html tree
+        myhtml_tree_t *myHtmlTree = myhtml_tree_create();
+        myhtml_tree_init(myHtmlTree, myHtml);
+
+        // 解析html字符串
+        myhtml_parse(myHtmlTree, MyENCODING_UTF_8, response.c_str(), response.size()); // size_type and size_t
+        mycore_string_raw_t stringRaw = {0};
+        myhtml_serialization_tree_buffer(myhtml_tree_get_node_body(myHtmlTree), &stringRaw);
+        printf("%s\n", stringRaw.data);
+
+        const char* attr_key = "type";
+        // get and print
+        myhtml_collection_t *collection = myhtml_get_nodes_by_attribute_key(myHtmlTree, NULL, NULL, attr_key, strlen(attr_key), NULL);
+
+        const char* name = "div";
+        myhtml_collection_t *collection2 = myhtml_get_nodes_by_name(myHtmlTree, NULL, name, strlen(name), NULL);
+
+        for(size_t i = 0; i < collection->length; i++)
+            myhtml_serialization_node_callback(collection->list[i], serialization_callback, NULL);
+
+        for(size_t i = 0; i < collection2->length; i++)
+            myhtml_serialization_node_callback(collection2->list[i], serialization_callback, NULL);
+
+        // 释放资源
+        mycore_string_raw_destroy(&stringRaw, false);
+        myhtml_tree_destroy(myHtmlTree);
+        myhtml_destroy(myHtml);
+
         // 这里可以处理返回的值
         JSONCPP_STRING json_string; // std::string的别名
     } else {
@@ -50,3 +89,4 @@ int main() {
     }
     return 0; // 7月10号，10点-11点。我们是第6组，200号，户口本原件复印件，要父母、户主、小朋友页。小朋友不需要去。
 }
+
