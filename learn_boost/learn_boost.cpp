@@ -67,17 +67,29 @@ int main() {
 
         const char* attr_key = "type";
         // get and print
-//        myhtml_collection_t *collection = myhtml_get_nodes_by_attribute_key(myHtmlTree, NULL, NULL, attr_key, strlen(attr_key), NULL);
+        myhtml_collection_t *collection = myhtml_get_nodes_by_attribute_key(myHtmlTree, NULL, NULL, attr_key, strlen(attr_key), NULL);
+        for(size_t i = 0; i < collection->length; i++) {
+            mycore_string_raw_t stringRawBuffer = {nullptr};
+            // 这个回调会获取一个完整的div标签，但是没有标签内的内容啊
+            myhtml_serialization_node_buffer(collection->list[i], &stringRawBuffer);
+            std::cout << stringRawBuffer.data << std::endl;
+            mycore_string_raw_destroy(&stringRawBuffer, false);
+        }
 
         const char* name = "div";
         myhtml_collection_t *collection2 = myhtml_get_nodes_by_name(myHtmlTree, NULL, name, strlen(name), NULL);
-
+        myhtml_get_nodes_by_tag_id(myHtmlTree, collection2, MyHTML_TAG_DIV, nullptr);
         for(size_t i = 0; i < collection2->length; i++) {
             mycore_string_raw_t stringRawBuffer = {nullptr};
-            // 这个回调会获取一个完整的div标签
+            mycore_string_raw_t childStringRawBuffer = {nullptr};
+            myhtml_node_child(collection2->list[i]);
+            // 这个回调会获取一个完整的div标签，但是没有标签内的内容啊
             myhtml_serialization_node_buffer(collection2->list[i], &stringRawBuffer);
+            myhtml_serialization_node_buffer(myhtml_node_child(collection2->list[i]), &childStringRawBuffer);
             std::cout << stringRawBuffer.data << std::endl;
+            std::cout << childStringRawBuffer.data << std::endl;
             mycore_string_raw_destroy(&stringRawBuffer, false);
+            mycore_string_raw_destroy(&childStringRawBuffer, false);
         }
 
         for(size_t i = 0; i < collection2->length; i++)
