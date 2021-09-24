@@ -29,7 +29,8 @@ size_t write_data(void *ptr, size_t size, size_t nmemb, void *stream) {
 
 mystatus_t serialization_callback(const char* data, size_t len, void* ctx)
 {
-    printf("%.*s", (int)len, data);
+//    printf("%.*s", (int)len, data);
+    std::cout << std::string(data) << std::endl;
     return MyCORE_STATUS_OK;
 }
 
@@ -60,22 +61,33 @@ int main() {
 
         // 解析html字符串
         myhtml_parse(myHtmlTree, MyENCODING_UTF_8, response.c_str(), response.size()); // size_type and size_t
-        mycore_string_raw_t stringRaw = {0};
+        mycore_string_raw_t stringRaw = {nullptr};
         myhtml_serialization_tree_buffer(myhtml_tree_get_node_body(myHtmlTree), &stringRaw);
-        printf("%s\n", stringRaw.data);
+//        printf("%s\n", stringRaw.data);
 
         const char* attr_key = "type";
         // get and print
-        myhtml_collection_t *collection = myhtml_get_nodes_by_attribute_key(myHtmlTree, NULL, NULL, attr_key, strlen(attr_key), NULL);
+//        myhtml_collection_t *collection = myhtml_get_nodes_by_attribute_key(myHtmlTree, NULL, NULL, attr_key, strlen(attr_key), NULL);
 
         const char* name = "div";
         myhtml_collection_t *collection2 = myhtml_get_nodes_by_name(myHtmlTree, NULL, name, strlen(name), NULL);
 
-        for(size_t i = 0; i < collection->length; i++)
-            myhtml_serialization_node_callback(collection->list[i], serialization_callback, NULL);
+        for(size_t i = 0; i < collection2->length; i++) {
+            mycore_string_raw_t stringRawBuffer = {nullptr};
+            // 这个回调会获取一个完整的div标签
+            myhtml_serialization_node_buffer(collection2->list[i], &stringRawBuffer);
+            std::cout << stringRawBuffer.data << std::endl;
+            mycore_string_raw_destroy(&stringRawBuffer, false);
+        }
 
         for(size_t i = 0; i < collection2->length; i++)
             myhtml_serialization_node_callback(collection2->list[i], serialization_callback, NULL);
+
+        // parse html
+        myhtml_parse_fragment(myHtmlTree, MyENCODING_UTF_8, response.c_str(), response.size(), MyHTML_TAG_DIV, MyHTML_NAMESPACE_HTML);
+
+        // print fragment
+        myhtml_serialization_tree_callback(myhtml_tree_get_document(myHtmlTree), serialization_callback, NULL);
 
         // 释放资源
         mycore_string_raw_destroy(&stringRaw, false);
