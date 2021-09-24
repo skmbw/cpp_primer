@@ -5,6 +5,7 @@
 #include "learn_boost.h"
 #include <iostream>
 #include <string>
+#include <cassert>
 #include "jsoncpp/json/json.h"
 #include "myhtml/api.h"
 
@@ -34,6 +35,96 @@ mystatus_t serialization_callback(const char* data, size_t len, void* ctx)
     return MyCORE_STATUS_OK;
 }
 
+static bool filter_node(myhtml_tree_node_t* node)
+{
+    assert(node);
+    myhtml_tag_id_t tag = myhtml_node_tag_id(node);
+    return (tag != MyHTML_TAG__TEXT) && (tag != MyHTML_TAG__END_OF_FILE) && (tag != MyHTML_TAG__COMMENT) && (tag != MyHTML_TAG__UNDEF);
+}
+
+/* depth-first lefthand tree walk */
+static void walk_subtree(myhtml_tree_t* tree, myhtml_tree_node_t* root, int level)
+{
+    if (!root) {
+        return;
+    }
+
+    /* Check if we handle this node type */
+    if (!filter_node(root)) {
+        return;
+    }
+
+    /* start sexpr */
+    putchar('(');
+
+    /* print this node */
+    printf("%s", myhtml_tag_name_by_id(tree, myhtml_node_tag_id(root), NULL));
+    myhtml_tree_attr_t* attr = myhtml_node_attribute_first(root);
+    while (attr != NULL) {
+        /* attribute sexpr (name value)*/
+        const char *key = myhtml_attribute_key(attr, NULL);
+        const char *value = myhtml_attribute_value(attr, NULL);
+
+        if(key == NULL)
+            printf("(KEY IS NULL)");
+        else if (value)
+            printf("(%s \'%s\')", key, value);
+        else
+            printf("(%s)", key);
+
+        attr = myhtml_attribute_next(attr);
+    }
+
+    /* left hand depth-first recoursion */
+    myhtml_tree_node_t* child = myhtml_node_child(root);
+    while (child != NULL) {
+        walk_subtree(tree, child, level + 1);
+        child = myhtml_node_next(child);
+    }
+
+    /* close sexpr */
+    putchar(')');
+}
+
+int test_walk_tree(std::string &data)
+{
+    mystatus_t res;
+
+    // basic init
+    myhtml_t* myhtml = myhtml_create();
+    if (!myhtml) {
+        printf("myhtml_create failed\n");
+    }
+
+    res = myhtml_init(myhtml, MyHTML_OPTIONS_DEFAULT, 1, 0);
+    if (MYHTML_FAILED(res)) {
+        printf("myhtml_init failed with %d\n", res);
+    }
+
+    // init tree
+    myhtml_tree_t* tree = myhtml_tree_create();
+    if (!tree) {
+        printf("myhtml_tree_create failed\n");
+    }
+
+    res = myhtml_tree_init(tree, myhtml);
+    if (MYHTML_FAILED(res)) {
+        printf("myhtml_tree_init failed with %d\n", res);
+    }
+
+    // parse html
+    myhtml_parse(tree, MyENCODING_UTF_8, data.c_str(), data.size());
+
+    walk_subtree(tree, myhtml_tree_get_node_html(tree), 0);
+    printf("\n");
+
+    // release resources
+    myhtml_tree_destroy(tree);
+    myhtml_destroy(myhtml);
+
+    return EXIT_SUCCESS;
+}
+
 int main() {
     learn_boost learnBoost;
     std::cout << learnBoost.str << std::endl;
@@ -51,6 +142,9 @@ int main() {
     curl_easy_cleanup(curl); // 清理，释放资源
     if (result == CURLcode::CURLE_OK) {
         std::cout << response << std::endl;
+
+        // 遍历html tree
+        test_walk_tree(response);
 
         // 初始化my html
         myhtml_t *myHtml = myhtml_create();
@@ -78,18 +172,28 @@ int main() {
 
         const char* name = "div";
         myhtml_collection_t *collection2 = myhtml_get_nodes_by_name(myHtmlTree, NULL, name, strlen(name), NULL);
-        myhtml_get_nodes_by_tag_id(myHtmlTree, collection2, MyHTML_TAG_DIV, nullptr);
+        myhtml_collection_t *nodes_by_tag_id_collections = myhtml_get_nodes_by_tag_id(myHtmlTree, nullptr, MyHTML_TAG_DIV, nullptr);
         for(size_t i = 0; i < collection2->length; i++) {
             mycore_string_raw_t stringRawBuffer = {nullptr};
             mycore_string_raw_t childStringRawBuffer = {nullptr};
-            myhtml_node_child(collection2->list[i]);
             // 这个回调会获取一个完整的div标签，但是没有标签内的内容啊
             myhtml_serialization_node_buffer(collection2->list[i], &stringRawBuffer);
-            myhtml_serialization_node_buffer(myhtml_node_child(collection2->list[i]), &childStringRawBuffer);
+
+            myhtml_tree_node_t *node_child = myhtml_node_child(collection2->list[i]);
+            if (node_child) {
+                myhtml_serialization_node_buffer(node_child, &childStringRawBuffer);
+            }
             std::cout << stringRawBuffer.data << std::endl;
             std::cout << childStringRawBuffer.data << std::endl;
             mycore_string_raw_destroy(&stringRawBuffer, false);
             mycore_string_raw_destroy(&childStringRawBuffer, false);
+        }
+
+        for (size_t i = 0; i < nodes_by_tag_id_collections->length; i++) {
+            myhtml_tree_node_t *tree_node = myhtml_node_child(nodes_by_tag_id_collections->list[i]);
+            if (tree_node) {
+                std::cout << myhtml_node_text(tree_node, nullptr) << std::endl;
+            }
         }
 
         for(size_t i = 0; i < collection2->length; i++)
