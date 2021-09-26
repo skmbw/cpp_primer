@@ -37,6 +37,7 @@ int main()
 	std::cin >> v1 >> v2;
 	std::cout << "The sum of " << v1 << " and " << v2
 	          << " is " << v1 + v2 << std::endl;
+	std::cout << "The multiply of " << v1 << " * " << v2 << " = " << v1 * v2 << std::endl;
 	return 0;
 }
 
